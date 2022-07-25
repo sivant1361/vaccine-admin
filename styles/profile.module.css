@@ -1,0 +1,108 @@
+.contain {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+   
+  }
+  .wrapper {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  }
+  .wrapper > * {
+    padding: 1em;
+  }
+.formBox{
+  justify-content: space-between;
+  
+}
+.labels{
+  display:inline-block;
+  width:150px;
+  margin-right: 1em;
+  text-align: end;
+  font-weight:600;
+}
+
+  .form p {
+    margin: 0;
+  }
+  
+  .full-width {
+    grid-column: 2 / 3;
+  }
+  
+  .inputTag{
+    padding: 0.7em  0.3em;
+    margin-left: 1em;
+    width: 250px;
+    border: none;
+  }
+  .textArea{
+    width: 100%;
+  border: 1px solid #000;
+  }
+  .profileBtn{
+        background-color: lightblue;
+        height: 80;
+        width: 150;
+        padding: 8px;
+        border: None;
+        font-size: 15px;
+        border-radius: 5px;
+        box-shadow: 4px 3px;
+        margin-left: 40%;
+  }
+/* 
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profileButton {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profileButton:hover {
+    background: #682773
+}
+
+.profileButton:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profileButton:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px;
+    grid-column: 1/2;
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+.labels{
+    padding-top: 20px;
+    font-size:15px ;
+}
+.inputButton{
+  grid-column: 2 / 3;
+     
+}
+.form{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+} */

@@ -1,0 +1,13 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background-color: #cbcb77;
+    margin:0 auto;
+    
+}
+
+@media screen and(max-width:1200px) {
+    .heading{
+        display: block;
+    }
+}
