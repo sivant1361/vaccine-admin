@@ -102,9 +102,39 @@ const Appointments = () => {
         setCellHeaderProps: () => ({
           style: { textAlign: "left", fontWeight: 900, color: "#007" },
         }),
-        setCellProps: () => ({ style: { alignItems: "center" } }),
+        setCellProps: () => ({
+          style: { alignItems: "center", textAlign: "center" },
+        }),
       },
-    }
+    },
+    {
+      name: "vaccine",
+      label: "Vaccine  Type",
+      options: {
+        filter: true,
+        sort: true,
+        setCellHeaderProps: () => ({
+          style: { textAlign: "left", fontWeight: 900, color: "#007" },
+        }),
+        setCellProps: () => ({
+          style: { alignItems: "center", textAlign: "center" },
+        }),
+      },
+    },
+    {
+      name: "dose",
+      label: "Dose Type",
+      options: {
+        filter: true,
+        sort: true,
+        setCellHeaderProps: () => ({
+          style: { textAlign: "left", fontWeight: 900, color: "#007" },
+        }),
+        setCellProps: () => ({
+          style: { alignItems: "center", textAlign: "center" },
+        }),
+      },
+    },
   ];
 
   const options = {
