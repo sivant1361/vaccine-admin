@@ -18,7 +18,7 @@ import { deleteCenter } from "./api";
 
 import MUIDataTable from "mui-datatables";
 
-const Centers = () => {
+const Appointments = () => {
   const db = firebase.firestore();
 
   const [user, loading, error] = useAuthState(firebase.auth());
@@ -29,16 +29,23 @@ const Centers = () => {
 
   useEffect(async () => {
     console.log("inside useEffect");
-    const querySnapshot = await getDocs(collection(db, "centers"));
+    const querySnapshot = await getDocs(collection(db, "appointments"));
     const size = querySnapshot.size;
     var count = 0;
     var temp = [];
+    const d = new Date();
+    const day = d.getDate();
+    const month = d.getMonth() + 1;
+    const year = d.getFullYear();
+    const date = `${year}-${month}-${day}`;
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots
       console.log(doc.id, " => ", doc.data());
       // setUsers([...users, doc.data()]);
       // console.log(users);
-      temp.push(doc.data());
+      if (doc.id.includes(date)) {
+        temp = temp.concat(doc.data()["appointments"]);
+      }
       count++;
       if (count == size) {
         setUserFlag(1);
@@ -50,6 +57,18 @@ const Centers = () => {
   }, []);
 
   const columns = [
+    {
+      name: "email",
+      label: "patient",
+      options: {
+        filter: true,
+        sort: true,
+        setCellHeaderProps: () => ({
+          style: { textAlign: "left", fontWeight: 900, color: "#007" },
+        }),
+        setCellProps: () => ({ style: { alignItems: "center" } }),
+      },
+    },
     {
       name: "name",
       label: "Center Name",
@@ -83,67 +102,9 @@ const Centers = () => {
         setCellHeaderProps: () => ({
           style: { textAlign: "left", fontWeight: 900, color: "#007" },
         }),
-        setCellProps: () => ({ style: { alignItems: "center" ,textAlign: "center"} }),
+        setCellProps: () => ({ style: { alignItems: "center" } }),
       },
-    },
-    {
-      name: "pin",
-      label: "Pincode",
-      options: {
-        filter: true,
-        sort: true,
-        setCellHeaderProps: () => ({
-          style: { textAlign: "left", fontWeight: 900, color: "#007" },
-        }),
-        setCellProps: () => ({ style: { alignItems: "center",textAlign: "center"} }),
-      },
-    },
-    {
-      name: "phone",
-      label: "Contact",
-      options: {
-        filter: true,
-        sort: true,
-        setCellHeaderProps: () => ({
-          style: { textAlign: "left", fontWeight: 900, color: "#007" },
-        }),
-        setCellProps: () => ({ style: { alignItems: "center",textAlign: "center" } }),
-      },
-    },
-    {
-      name: "",
-      label: "Actions",
-      options: {
-        setCellProps: () => ({ style: { alignItems: "center" ,textAlign:"center"} }),
-        customBodyRender: (value, tableMeta, updateValue) => {
-          return (
-            <Button
-              color="error"
-              style={{ textAlign: "center",alignItems: "center" }}
-              startIcon={<DeleteIcon />}
-              onClick={async () => {
-                var temp = tempUser;
-                // console.log(temp)
-                temp.splice(tableMeta.rowIndex, 1);
-                setUserFlag(0);
-                await deleteCenter(tableMeta.rowData[0])
-                  .then(() => {
-                    setTempUser(temp);
-                    console.log(
-                      tableMeta.rowData,
-                      "deleted value successfully"
-                    );
-                  })
-                  .catch((err) => {
-                    console.log("deleting value failed");
-                  });
-                setUserFlag(1);
-              }}
-            ></Button>
-          );
-        },
-      },
-    },
+    }
   ];
 
   const options = {
@@ -174,7 +135,7 @@ const Centers = () => {
               <h5>Loading...</h5>
             </div>
           ) : (
-            <div style={{ width: "100%" }}>
+            <div>
               {/* {JSON.stringify(tempUser)} */}
 
               {tempUser && (
@@ -206,4 +167,4 @@ const Centers = () => {
   }
 };
 
-export default Centers;
+export default Appointments;

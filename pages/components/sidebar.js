@@ -35,6 +35,13 @@ function Sidebar() {
         <ul>
           <li>
             <FontAwesomeIcon
+              icon={faList}
+              style={{ width: "18px", cursor: "pointer", marginRight: "10px" }}
+            />
+            <a href="/add">Add Center</a>
+          </li>
+          <li>
+            <FontAwesomeIcon
               icon={faDashboard}
               style={{ width: "18px", cursor: "pointer", marginRight: "10px" }}
             />
@@ -42,10 +49,10 @@ function Sidebar() {
           </li>
           <li>
             <FontAwesomeIcon
-              icon={faList}
+              icon={faCog}
               style={{ width: "18px", cursor: "pointer", marginRight: "10px" }}
             />
-            <a href="/add">Add Center</a>
+            <a href="/appointments">Slots</a>
           </li>
 
           <li>

@@ -29,7 +29,7 @@ const Add = () => {
     console.log(state);
     addCenter(state)
       .then(() => {
-        // alert("center added successfully");
+        alert("center added successfully");
         setState({ name: "", district: "", phone: "", address: "", pin: "" });
       })
       .catch((err) => {
